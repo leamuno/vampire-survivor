@@ -1,12 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1cekowx7m1ix"]
+[gd_scene load_steps=4 format=3 uid="uid://c1cekowx7m1ix"]
 
 [ext_resource type="Script" path="res://Player/Player.cs" id="1_4ehjo"]
 [ext_resource type="Texture2D" uid="uid://cp1f4mwexqb7c" path="res://Textures/Player/player_sprite.png" id="1_dnc32"]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r62jg"]
+radius = 5.0
+height = 20.0
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_4ehjo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_dnc32")
 hframes = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 3)
+shape = SubResource("CapsuleShape2D_r62jg")

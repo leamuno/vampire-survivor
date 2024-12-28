@@ -3,6 +3,7 @@ using Godot;
 public partial class Player : CharacterBody2D
 {
   private float movementSpeed = 40f;
+  private int hp = 80;
 
   private Sprite2D sprite; // Declare the Sprite2D variable
   private Timer walkTimer;
@@ -54,5 +55,11 @@ public partial class Player : CharacterBody2D
     Velocity = mov.Normalized() * movementSpeed;
     // Move and slide
     MoveAndSlide();
+  }
+
+  public void _OnHurtBoxHurt(int damage)
+  {
+    hp -= damage;
+    GD.Print(hp, damage);
   }
 }

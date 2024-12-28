@@ -4,7 +4,8 @@ public partial class Enemy : CharacterBody2D
 {
 	[Export]
   public float movementSpeed = 20f;
-
+  [Export]
+  public int hp = 10;
   private Node2D player;
   private Sprite2D sprite; // Declare the Sprite2D variable
   private AnimationPlayer anim;
@@ -30,6 +31,15 @@ public partial class Enemy : CharacterBody2D
     else if (direction.X < -0.1)
     {
       sprite.FlipH = false; // Reset flip
+    }
+  }
+  public void _OnHurtBoxHurt(int damage)
+  {
+    hp -= damage;
+    GD.Print(hp, damage);
+    if (hp <= 0)
+    {
+      QueueFree();
     }
   }
 }

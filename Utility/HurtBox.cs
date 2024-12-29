@@ -20,13 +20,13 @@ public partial class HurtBox : Area2D
     collision = GetNode<CollisionShape2D>("CollisionShape2D");
     disableTimer = GetNode<Timer>("DisableTimer");
 	}
-  private void _OnAreaEntered(Area2D area)
+  private void _on_area_entered(Area2D area)
   {
     GD.Print("Area entered: ", area.Name);
     if (area.IsInGroup("attack"))
     {
       GD.Print("Area is in attack group.");
-      if (area.HasMeta("damage"))
+      if (area is HitBox hitBox)
       {
         // Handle HurtBoxType
         switch (HurtBoxType)
@@ -38,18 +38,15 @@ public partial class HurtBox : Area2D
           case HurtBoxTypes.HitOnce:
             break;
           case HurtBoxTypes.DisableHitBox:
-            if (area is HitBox hitBox)
-            {
-              hitBox.TempDisable(); // Call TempDisable on HitBox
-            }
+            hitBox.TempDisable(); // Call TempDisable on HitBox
             break;
         }
-        int damage = (int)area.GetMeta("damage");
+        int damage = hitBox.Damage;
         EmitSignal(SignalName.Hurt, damage);
       }
     }
   }
-  private void _OnDisableTimerTimeout()
+  private void _on_disable_timer_timeout()
   {
     collision.CallDeferred("set", "disabled", false);
   }

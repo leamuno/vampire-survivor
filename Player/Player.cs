@@ -57,7 +57,7 @@ public partial class Player : CharacterBody2D
     MoveAndSlide();
   }
 
-  public void _OnHurtBoxHurt(int damage)
+  public void _on_hurt_box_hurt(int damage)
   {
     hp -= damage;
     GD.Print(hp, damage);

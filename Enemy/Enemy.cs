@@ -33,7 +33,7 @@ public partial class Enemy : CharacterBody2D
       sprite.FlipH = false; // Reset flip
     }
   }
-  public void _OnHurtBoxHurt(int damage)
+  public void _on_hurt_box_hurt(int damage)
   {
     hp -= damage;
     GD.Print(hp, damage);

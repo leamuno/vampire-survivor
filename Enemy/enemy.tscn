@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://crfb7ea11i6xo" path="res://Utility/hit_box.tscn" id="4_o221b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2f0jk"]
-radius = 5.0
+radius = 4.0
 height = 18.0
 
 [sub_resource type="Animation" id="Animation_75dfy"]

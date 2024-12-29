@@ -3,7 +3,7 @@ using Godot;
 public partial class HitBox : Area2D
 {
   [Export]
-  public int damage = 1;
+  public int Damage = 1;
   private CollisionShape2D collision;
   private Timer disableTimer;
 	// Called when the node enters the scene tree for the first time.
@@ -19,7 +19,7 @@ public partial class HitBox : Area2D
     disableTimer.Start();
   }
 
-	public void _OnDisableHitBoxTimerTimeout()
+	public void _on_disable_hit_box_timer_timeout()
   {
     collision.CallDeferred("set", "disabled", false);
   }
